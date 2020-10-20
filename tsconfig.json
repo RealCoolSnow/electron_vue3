@@ -1,25 +1,28 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "importHelpers": true,
-    "jsx": "react",
-    "esModuleInterop": true,
-    "sourceMap": true,
-    "baseUrl": "./",
+    "baseUrl": ".",
+    "module": "ESNext",
+    "target": "es2016",
+    "lib": [
+      "DOM",
+      "ESNext"
+    ],
     "strict": true,
+    "esModuleInterop": true,
+    "incremental": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
     "paths": {
-      "/assets/*": ["src/render/assets/*"],
-      "/components/*": ["src/render/components/*"],
-      "/lib/*": ["src/render/lib/*"],
-      "/utils/*": ["src/render/utils/*"],
-      "/views/*": ["src/render/views/*"]
+      "/~/*": ["src/render/*"]
     },
-    "allowSyntheticDefaultImports": true
+    "plugins": [
+      {
+        "name": "@vuedx/typescript-plugin-vue"
+      }
+    ]
   },
-  "include": [
-    "src/**/*",
-    "typings/*.d.ts"
-  ]
+  "include": ["src/**/*", "typings/*.d.ts"],
+  "exclude": ["dist", "node_modules"]
 }

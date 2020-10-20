@@ -30,7 +30,7 @@ module.exports = (env = 'production') => {
         jsxFragment: 'React.Fragment',
         // Like @rollup/plugin-replace
         define: {
-          __VERSION__: '"x.y.z"'
+          __VERSION__: '"x.y.z"',
         },
         // Add extra loaders
         loaders: {
@@ -38,14 +38,14 @@ module.exports = (env = 'production') => {
           // require @rollup/plugin-commonjs
           '.json': 'json',
           // Enable JSX in .js files too
-          '.js': 'jsx'
+          '.js': 'jsx',
         },
       }),
       alias({
         entries: [
-          { find: '@main', replacement: path.join(__dirname, '../src/main'), },
-        ]
-      })
+          { find: '@main', replacement: path.join(__dirname, '../src/main') },
+        ],
+      }),
     ],
     external: [
       'crypto',

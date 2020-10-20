@@ -1,26 +1,14 @@
 <template>
-  <div class="logo-box">
-    <img style="height:200px;" src="./assets/electron.png" alt="Electron logo">
-    <img alt="Vue logo" src="./assets/logo.png" />
+  <div class="px-4 py-10 text-center text-gray-700 dark:text-gray-200">
+    <router-view />
   </div>
-  <HelloWorld msg="Hello Electron 9.0 + Vue 3.0 + Vite" />
 </template>
+<script lang="ts">
+import { defineComponent } from 'vue'
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+export default defineComponent({
+  setup() {
+    console.log('app created')
+  },
+})
 </script>
-
-<style>
-.logo-box {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-}
-</style>
