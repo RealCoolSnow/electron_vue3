@@ -75,9 +75,7 @@
     "tailwindcss": "^1.9.4",
     "typescript": "^4.0.3",
     "vite": "^1.0.0-rc.4",
-    "vite-plugin-components": "^0.2.13",
     "vite-plugin-mock": "^1.0.2",
-    "vite-plugin-purge-icons": "^0.4.4",
     "wait-on": "^5.2.0"
   },
   "prettier": {

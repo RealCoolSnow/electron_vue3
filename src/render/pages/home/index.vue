@@ -24,10 +24,16 @@ import { computed, defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
+import LocaleSwitch from '@/components/LocaleSwitch.vue'
+import Icon from '@/components/Icon.vue'
 import MutationTypes from '../../store/mutation-types'
 
 import { useHttpTest } from '../../test/api-test'
 export default defineComponent({
+  components: {
+    LocaleSwitch,
+    Icon,
+  },
   setup() {
     const { t } = useI18n()
     const store = useStore()

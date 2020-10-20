@@ -2,8 +2,6 @@
  * 参考链接: https://github.com/vitejs/vite/blob/master/src/node/config.ts
  */
 import path from 'path'
-import ViteComponents from 'vite-plugin-components'
-import PurgeIcons from 'vite-plugin-purge-icons'
 import { createMockServer } from 'vite-plugin-mock'
 import { UserConfig } from 'vite'
 import dotenv from 'dotenv'
@@ -25,16 +23,6 @@ const config: UserConfig = {
     // allowNodeBuiltins: ['electron-is-dev', 'electron-store', 'electron']
   },
   plugins: [
-    ViteComponents({
-      alias,
-      // Relative paths to the directory to search for components.
-      dirs: [`${renderDir}/components`],
-      // Valid file extensions for components.
-      extensions: ['vue'],
-      // Search for subdirectories
-      deep: true,
-    }),
-    PurgeIcons(),
     createMockServer({
       mockPath: 'mock',
       watchFiles: true,
@@ -64,7 +52,8 @@ const config: UserConfig = {
           const res = code.match(cjsRegexp)
           if (res) {
             // const Store = require('electron-store') -> import Store from 'electron-store'
-            code = code.replace(cjsRegexp, 'import $2 from \'$3\'')
+            // eslint-disable-next-line quotes
+            code = code.replace(cjsRegexp, `import $2 from '$3'`)
           }
           return code
         },
