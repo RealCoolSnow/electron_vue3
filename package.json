@@ -1,7 +1,7 @@
 {
   "name": "electron-vue",
   "version": "0.0.1",
-  "main": "dist/main.js",
+  "main": "dist/main/_.js",
   "scripts": {
     "dev": "npm run dev:all",
     "dev:all": "concurrently -n=h5,electron -c=green,blue \"npm run dev:h5\" \"npm run dev:electron\"",

@@ -12,6 +12,7 @@ const root = path.join(__dirname, renderDir)
 const alias = {
   '/@/': path.resolve(__dirname, renderDir),
 }
+console.log(alias)
 const config: UserConfig = {
   root,
   port: +process.env.PORT,
