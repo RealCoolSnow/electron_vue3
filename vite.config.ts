@@ -5,20 +5,19 @@ import path from 'path'
 import { createMockServer } from 'vite-plugin-mock'
 import { UserConfig } from 'vite'
 import dotenv from 'dotenv'
+import rollupResolve from '@rollup/plugin-node-resolve'
+import commonjs from '@rollup/plugin-commonjs'
 
 dotenv.config({ path: path.join(__dirname, '.env') })
 const renderDir = 'src/render'
-const root = path.join(__dirname, renderDir)
-const alias = {
-  '/@/': path.resolve(__dirname, renderDir),
-}
-console.log(alias)
+
 const config: UserConfig = {
-  root,
+  root: path.join(__dirname, renderDir),
   port: +process.env.PORT,
-  base: './',
   outDir: path.join(__dirname, 'dist/render'),
-  alias,
+  alias: {
+    '/@/': path.resolve(__dirname, renderDir),
+  },
   optimizeDeps: {
     // 这里不加也没事，用 require 的形式就能避开 import 被编译成 /@modules/fs?import
     // allowNodeBuiltins: ['electron-is-dev', 'electron-store', 'electron']
@@ -45,6 +44,8 @@ const config: UserConfig = {
       'electron',
     ],
     plugins: [
+      rollupResolve({ browser: true }),
+      commonjs(),
       {
         name: '@rollup/plugin-cjs2esm',
         transform(code, filename) {

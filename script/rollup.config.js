@@ -3,7 +3,7 @@ const { nodeResolve } = require('@rollup/plugin-node-resolve')
 const commonjs = require('@rollup/plugin-commonjs')
 const esbuild = require('rollup-plugin-esbuild')
 const alias = require('@rollup/plugin-alias')
-const json = require('@rollup/plugin-json')
+const rollupJson = require('@rollup/plugin-json')
 
 module.exports = (env = 'production') => {
   return {
@@ -16,8 +16,8 @@ module.exports = (env = 'production') => {
     },
     plugins: [
       nodeResolve({ jsnext: true, preferBuiltins: true, browser: true }), // 消除碰到 node.js 模块时⚠警告
+      rollupJson(),
       commonjs(),
-      json(),
       esbuild({
         // All options are optional
         include: /\.[jt]sx?$/, // default, inferred from `loaders` option
